@@ -34,6 +34,7 @@ known_width3 = 3.9
 known_width4 = 4.5
 known_width5 = 4.5
 known_distance = 58
+focal_length = 0.304
 crossroad_classifier = cv2.CascadeClassifier('cascade.xml')
 fr_road_classifier = cv2.CascadeClassifier('cascade6.xml')
 lr_road_classifier = cv2.CascadeClassifier('cascade5.xml')
@@ -60,30 +61,22 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         if len(crossroad) != 0:
             for (x,y,w,h) in crossroad:
                 cv2.rectangle(image1, (x,y), (x+w,y+h), (127,0,255), 2)
-                face_width = w
                 print('cross_road')
-                focal_length = (36*known_distance)/known_width
                 distance = (known_width*focal_length)/w
         if len(fr_road) != 0:
             for (x,y,w,h) in fr_road:
                 cv2.rectangle(image1, (x,y), (x+w,y+h), (0,255,0), 2)
-                face_width = w
                 print('fr_road')
-                focal_length = (36*known_distance)/known_width1
                 distance1 = (known_width1*focal_length)/w
         if len(lr_road) != 0:
             for (x,y,w,h) in lr_road:
                 cv2.rectangle(image1, (x,y), (x+w,y+h), (255,255,0), 2)
-                face_width = w
                 print('lr_road')
-                focal_length = (36*known_distance)/known_width2
                 distance2 = (known_width2*focal_length)/w
         if len(fl_road) != 0:
             for (x,y,w,h) in fl_road:
                 cv2.rectangle(image1, (x,y), (x+w,y+h), (0,255,255), 2)
-                face_width = w
                 print('fl_road')
-                focal_length = (36*known_distance)/known_width3
                 distance3 = (known_width3*focal_length)/w
         if len(person) != 0:
             for (x,y,w,h) in person:
